@@ -57,6 +57,12 @@ function Reglages() {
     setColor('rose clair');
   };
 
+  const handleDeleteProduct = (id) => {
+    const updatedProducts = products.filter(prod => prod.id !== id);
+    setProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  };
+
   return (
     <div style={{ padding: '1rem' }}>
       <h2>Réglages - Ajouter un produit</h2>
@@ -98,11 +104,16 @@ function Reglages() {
 
       <h3>Produits ajoutés :</h3>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {products.map((prod) => (
-          <li key={prod.id} style={{ backgroundColor: prod.color, padding: '0.5rem', margin: '0.25rem 0' }}>
-            {prod.name} - {prod.price}€ ({prod.type})
-          </li>
-        ))}
+  {products.map((prod) => (
+    <li key={prod.id} style={{ backgroundColor: prod.color, padding: '0.5rem', margin: '0.25rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div>
+        {prod.name} - {prod.price}€ ({prod.type})
+      </div>
+        <button onClick={() => handleDeleteProduct(prod.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem' }}>
+        🗑️
+        </button>
+        </li>
+          ))}
       </ul>
     </div>
   );
