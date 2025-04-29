@@ -1,15 +1,22 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Caisse from './components/Caisse';
 import Reglages from './components/Reglages';
 import Historique from './components/Historique';
+import './App.css'; // Nouveau fichier de style
 
 function App() {
   return (
     <Router>
-      <div style={{ padding: '1rem', background: '#f8f8f8', display: 'flex', gap: '1rem' }}>
-        <Link to="/" style={{ textDecoration: 'none' }}>🛒 Caisse</Link>
-        <Link to="/reglages" style={{ textDecoration: 'none' }}>⚙️ Réglages</Link>
-        <Link to="/historique" style={{ textDecoration: 'none' }}>🧾 Historique</Link>
+      <div className="navbar">
+        <NavLink to="/" className="navlink" end>
+          🛒 Caisse
+        </NavLink>
+        <NavLink to="/reglages" className="navlink">
+          ⚙️ Réglages
+        </NavLink>
+        <NavLink to="/historique" className="navlink">
+          🧾 Historique
+        </NavLink>
       </div>
 
       <Routes>

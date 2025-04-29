@@ -14,4 +14,27 @@
     padding: 1rem;
     border-radius: 8px;
     text-align: left;
+  }
+  
+  .historique-container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .historique-day {
+    margin-bottom: 2rem;
+  }
+  
+  .historique-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .historique-item {
+    background: #f0f0f0;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
   }  
