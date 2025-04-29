@@ -1,0 +1,158 @@
+/* Caisse.css */
+
+/* Reset simple */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Layout général */
+  .caisse-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  /* Partie Commande */
+  .commande-section {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  /* Partie Produits */
+  .produits-section {
+    flex: 2;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Catégories sticky */
+  .categories-menu {
+    flex: 1;
+    position: sticky;
+    top: 1rem;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  /* Produits disponibles */
+  .produits-list {
+    flex: 4;
+  }
+  
+  .produit-card {
+    background-color: #e6f7ff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    width: 120px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .produit-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* Boutons */
+  .button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 16px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Boutons quantité */
+  .button-qty {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .button-qty:hover {
+    background-color: #ddd;
+  }
+  
+  /* Ticket popup */
+  .ticket-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .ticket-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 320px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }  
+
+  /* Responsive pour iPad et tablettes */
+@media (max-width: 1024px) {
+    .caisse-container {
+      flex-direction: column;
+    }
+  
+    .produits-section {
+      flex-direction: column;
+    }
+  
+    .produits-list, .categories-menu {
+      flex: unset;
+      width: 100%;
+    }
+  
+    .produit-card {
+      width: 100%;
+      height: auto;
+      font-size: 18px;
+    }
+  
+    .button {
+      width: 100%;
+      font-size: 18px;
+    }
+  
+    .button-qty {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }  

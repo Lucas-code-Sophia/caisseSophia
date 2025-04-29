@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Reglages.css';
 
 function Reglages() {
   const [products, setProducts] = useState(() => {
@@ -12,8 +13,8 @@ function Reglages() {
   const [color, setColor] = useState('rose clair');
   const [tva, setTva] = useState(10);
 
-  const [editProductId, setEditProductId] = useState(null); // Stocker juste l'ID
-  const [productToEdit, setProductToEdit] = useState(null); // Nouveau : le produit à modifier
+  const [editProductId, setEditProductId] = useState(null);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   const types = ['entrée', 'plat', 'dessert', 'soft', 'alcool', 'café', 'boisson', 'menu', 'autre'];
 
@@ -39,7 +40,7 @@ function Reglages() {
     setColor('rose clair');
     setTva(10);
     setEditProductId(null);
-    setProductToEdit(null); // RESET aussi
+    setProductToEdit(null);
   };
 
   const handleAddOrUpdateProduct = () => {
@@ -85,7 +86,7 @@ function Reglages() {
   };
 
   const handleClickProduct = (product) => {
-    setProductToEdit(product); // ➔ Maintenant on stocke l'objet à éditer
+    setProductToEdit(product);
   };
 
   const handleSaveEdit = () => {
@@ -109,105 +110,69 @@ function Reglages() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', padding: '1rem', minHeight: '90vh' }}>
+    <div className="reglages-container">
       
-      {/* Partie gauche - Formulaire classique */}
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <div style={{ flex: 1 }}>
+      <div className="reglages-main">
+        <div className="formulaire-ajout">
           <h2>Ajouter un produit</h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <input
-              type="text"
-              placeholder="Nom du produit"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Prix"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-            <select value={type} onChange={(e) => setType(e.target.value)}>
-              {types.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-            <select value={color} onChange={(e) => setColor(e.target.value)}>
-              {colors.map((c) => (
-                <option key={c.name} value={c.name}>{c.name}</option>
-              ))}
-            </select>
-            <input
-              type="number"
-              placeholder="TVA (%)"
-              value={tva}
-              onChange={(e) => setTva(e.target.value)}
-            />
+          <input
+            type="text"
+            placeholder="Nom du produit"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Prix"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            {types.map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+          <select value={color} onChange={(e) => setColor(e.target.value)}>
+            {colors.map((c) => (
+              <option key={c.name} value={c.name}>{c.name}</option>
+            ))}
+          </select>
+          <input
+            type="number"
+            placeholder="TVA (%)"
+            value={tva}
+            onChange={(e) => setTva(e.target.value)}
+          />
 
-            <button onClick={handleAddOrUpdateProduct}>
-              {editProductId !== null ? 'Enregistrer les modifications' : 'Ajouter le produit'}
+          <button onClick={handleAddOrUpdateProduct}>
+            {editProductId !== null ? 'Enregistrer les modifications' : 'Ajouter le produit'}
+          </button>
+
+          {editProductId !== null && (
+            <button onClick={resetForm} style={{ backgroundColor: 'lightgray', marginTop: '0.5rem' }}>
+              Annuler la modification
             </button>
-
-            {editProductId !== null && (
-              <button onClick={resetForm} style={{ backgroundColor: 'lightgray', marginTop: '0.5rem' }}>
-                Annuler la modification
-              </button>
-            )}
-          </div>
+          )}
         </div>
 
-        {/* Partie droite - Liste produits */}
-        <div style={{ flex: 2 }}>
+        <div className="produits-existants">
           <h2>Produits existants</h2>
 
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
+          <div className="produits-grille">
             {products.map((prod) => (
               <div
                 key={prod.id}
                 onClick={() => handleClickProduct(prod)}
-                style={{
-                  width: '150px',
-                  height: '140px',
-                  backgroundColor: prod.color,
-                  borderRadius: '8px',
-                  padding: '0.5rem',
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s, box-shadow 0.2s'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                className="produit-carte"
+                style={{ backgroundColor: prod.color }}
               >
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDeleteProduct(prod.id);
                   }}
-                  style={{
-                    position: 'absolute',
-                    top: '5px',
-                    right: '5px',
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '1.2rem',
-                    cursor: 'pointer',
-                    color: 'red'
-                  }}
+                  className="produit-supprimer"
                 >
                   🗑️
                 </button>
@@ -221,9 +186,8 @@ function Reglages() {
         </div>
       </div>
 
-      {/* Formulaire édition */}
       {productToEdit && (
-        <div style={{ backgroundColor: '#f2f2f2', padding: '1rem', borderRadius: '10px' }}>
+        <div className="edition-formulaire">
           <h2>Modifier le produit</h2>
           <input
             type="text"

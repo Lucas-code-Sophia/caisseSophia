@@ -1,0 +1,65 @@
+/* Global Reglages */
+.reglages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    min-height: 90vh;
+  }
+  
+  .reglages-main {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .formulaire-ajout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .produits-existants {
+    flex: 2;
+  }
+  
+  .produits-grille {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .produit-carte {
+    width: 150px;
+    height: 140px;
+    border-radius: 8px;
+    padding: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .produit-carte:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .produit-supprimer {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: red;
+  }
+  
+  .edition-formulaire {
+    background-color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 10px;
+  }  
