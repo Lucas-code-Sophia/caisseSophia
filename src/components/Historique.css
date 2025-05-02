@@ -1,40 +1,66 @@
 .historique-container {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .historique-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .historique-item {
-    background: #f0f0f0;
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: left;
-  }
-  
-  .historique-container {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .historique-day {
-    margin-bottom: 2rem;
-  }
-  
-  .historique-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 1rem;
-  }
-  
-  .historique-item {
-    background: #f0f0f0;
-    margin: 0.5rem 0;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: left;
-  }  
+  padding: 2rem;
+  text-align: center;
+}
+
+.jour-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.transaction-ligne {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.recap-jour {
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.total-global-card {
+  margin-top: 3rem;
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+}
+
+.jours-wrapper {
+  display: flex;
+  flex-direction: row; /* chaque jour est une colonne */
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.jour-colonne {
+  display: flex;
+  flex-direction: column; /* empile les transactions verticalement */
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 220px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-colonne {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
