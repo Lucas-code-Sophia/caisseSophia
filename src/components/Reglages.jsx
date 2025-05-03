@@ -1,11 +1,24 @@
 import { useState } from 'react';
 import './Reglages.css';
+import produitsParDefaut from './produits_sophia_vfinal.json';
 
 function Reglages() {
   const [products, setProducts] = useState(() => {
-    const savedProducts = localStorage.getItem('products');
-    return savedProducts ? JSON.parse(savedProducts) : [];
-  });
+    const saved = localStorage.getItem('products');
+  
+    if (saved) {
+      return JSON.parse(saved);
+    } else {
+      // Générer des IDs uniques aux produits par défaut
+      const produitsInitialises = produitsParDefaut.map(p => ({
+        ...p,
+        id: Date.now() + Math.random(),
+      }));
+  
+      localStorage.setItem('products', JSON.stringify(produitsInitialises));
+      return produitsInitialises;
+    }
+  });  
 
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -86,6 +99,7 @@ function Reglages() {
   };
 
   const handleClickProduct = (product) => {
+    setEditProductId(product.id);
     setProductToEdit(product);
   };
 
@@ -111,7 +125,6 @@ function Reglages() {
 
   return (
     <div className="reglages-container">
-      
       <div className="reglages-main">
         <div className="formulaire-ajout">
           <h2>Ajouter un produit</h2>

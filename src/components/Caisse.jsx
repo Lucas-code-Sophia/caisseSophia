@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Caisse.css';
+import produitsParDefaut from './produits_sophia_vfinal.json';
 
 function Caisse() {
   const [products, setProducts] = useState([]);
@@ -7,6 +8,21 @@ function Caisse() {
   const [selectedForPayment, setSelectedForPayment] = useState([]);
   const ticketRef = useRef(null);
   const [showTicketPreview, setShowTicketPreview] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('products');
+    if (saved) {
+      setProducts(JSON.parse(saved));
+    } else {
+      // Initialiser avec les produits du JSON + leur attribuer un ID unique s'ils n'en ont pas
+      const produitsAvecId = produitsParDefaut.map((prod) => ({
+        ...prod,
+        id: prod.id || Date.now() + Math.random(), // pour éviter les doublons
+      }));
+      setProducts(produitsAvecId);
+      localStorage.setItem('products', JSON.stringify(produitsAvecId));
+    }
+  }, []);  
 
   const [paymentsHistory, setPaymentsHistory] = useState(() => {
     const saved = localStorage.getItem('paymentsHistory');

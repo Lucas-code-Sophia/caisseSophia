@@ -52,8 +52,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 0.5rem 1rem;
-    width: 120px;
-    height: 70px;
+    width: 160px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
