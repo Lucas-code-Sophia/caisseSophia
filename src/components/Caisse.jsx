@@ -72,7 +72,7 @@ function Caisse() {
 
   const [ticketNumber, setTicketNumber] = useState(generateTicketNumber());
 
-  const types = ['entrée', 'plat', 'dessert', 'soft', 'alcool', 'café', 'boisson', 'menu', 'autre'];
+  const types = ['entrée', 'plat', 'dessert', 'soft', 'cocktail', 'vins', 'café', 'menu', 'autre'];
 
   useEffect(() => {
     const savedProducts = localStorage.getItem('products');
@@ -162,14 +162,35 @@ function Caisse() {
   const total = order.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handlePrint = () => {
-    const printContent = ticketRef.current.innerHTML;
-    const originalContent = document.body.innerHTML;
+    const printWindow = window.open('', '_blank');
+    const content = `
+      <html>
+        <head>
+          <title>Ticket</title>
+          <style>
+            body {
+              font-family: monospace;
+              font-size: 12px;
+              padding: 1rem;
+            }
+          </style>
+        </head>
+        <body>
+          ${ticketRef.current.innerHTML}
+        </body>
+      </html>
+    `;
   
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = originalContent;
-    window.location.reload(); // pour éviter les bugs de styles après impression
-  };
+    printWindow.document.open();
+    printWindow.document.write(content);
+    printWindow.document.close();
+  
+    printWindow.onload = () => {
+      printWindow.focus();
+      printWindow.print();
+      // Ne pas fermer la fenêtre ici
+    };
+  };   
 
   return (
     <div className="caisse-container">

@@ -50,9 +50,10 @@ body {
   .produit-card {
     background-color: #e6f7ff;
     border: 1px solid #ccc;
+    color: black;
     border-radius: 12px;
     padding: 0.5rem 1rem;
-    width: 160px;
+    width: 180px;
     height: 100px;
     display: flex;
     flex-direction: column;

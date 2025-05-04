@@ -2,56 +2,56 @@
     {
       "name": "Mojito",
       "price": 12,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Pamela",
       "price": 14,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Pornstar Martini",
       "price": 15,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Spritz",
       "price": 11,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Moscow Mule",
       "price": 14,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Gin Tonic",
       "price": 14,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Espresso Martini",
       "price": 14,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
     {
       "name": "Sophia",
       "price": 14,
-      "type": "alcool",
+      "type": "cocktail",
       "color": "#FFDAB9",
       "tva": 20
     },
@@ -380,260 +380,308 @@
     {
       "name": "Blanc Bordeaux Ch\u00e2teau Guillebot Plaisance (verre)",
       "price": 6,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffffff",
       "tva": 20
     },
     {
       "name": "Blanc Pessac-L\u00e9ognan Ch\u00e2teau Lafont Menault (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffffff",
       "tva": 20
     },
     {
       "name": "Blanc Poully fum\u00e9 Domaine de Chaveau (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffffff",
       "tva": 20
     },
     {
       "name": "Blanc Tariquet 1\u00e8re Grive (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffffff",
       "tva": 20
     },
     {
       "name": "Rouge Bordeaux Ch\u00e2teau Guillebot Plaisance (verre)",
       "price": 6,
-      "type": "alcool",
+      "type": "vins",
       "color": "#b30000",
       "tva": 20
     },
     {
       "name": "Rouge Grave Ch\u00e2teau Beauregard Ducasse (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#b30000",
       "tva": 20
     },
     {
       "name": "Rouge Pessac-L\u00e9ognan Ch\u00e2teau de Picque Caillou (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#b30000",
       "tva": 20
     },
     {
       "name": "Rouge C\u00f4te du Roussillon Kar Magna (verre)",
       "price": 6,
-      "type": "alcool",
+      "type": "vins",
       "color": "#b30000",
       "tva": 20
     },
     {
       "name": "Ros\u00e9 Le Clocher (verre)",
       "price": 6,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffc0cb",
       "tva": 20
     },
     {
       "name": "Ros\u00e9 Ch\u00e2teau Reillanne (verre)",
       "price": 8,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffc0cb",
       "tva": 20
     },
     {
       "name": "Ros\u00e9 Ch\u00e2teau Sainte Marguerite (verre)",
       "price": 9,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffc0cb",
       "tva": 20
     },
     {
       "name": "Blanc Bordeaux Château Guillebot Plaisance",
       "price": 25,
-      "type": "alcool",
+      "type": "vins",
       "color": "#ffffff",
       "tva": 20
     },
     {
       "name": "Bordeaux, Château Guillebot Plaisance",
       "price": 25,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Pessac-Léognan, Château Lafont Menault",
       "price": 39,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Pessac-Léognan, Château Corbonieux",
       "price": 68,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Grave, Château Beauregard Ducasse",
       "price": 31,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Sancère, Domaine Olivier Foucher",
       "price": 46,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Pouilly fumé, Domaine Chaveau",
       "price": 42,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Côte de Gascogne, Domaine Tariquet 1ère Grive",
       "price": 29,
-      "type": "alcool",
+      "type": "vins",
       "color": "white",
       "tva": 20
     },
     {
       "name": "Bordeaux, Château Guillebot Plaisance",
       "price": 25,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Grave, Château Beauregard Ducasse Cuvée Lagepaux",
       "price": 29,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Haut-Médoc, Les Brulières de Beychevelle",
       "price": 44,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Pessac-Léognan, Réserve de Picque Caillou",
       "price": 40,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Pessac-Léognan, Château Fieuzal",
       "price": 82,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Margaux, Château Laroque",
       "price": 56,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Pomerol, Domaine de l’Église",
       "price": 90,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Côte du Roussillon, Kar Magna (rouge)",
       "price": 29,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Pauillac, Château Haut-Bage Monpelou",
       "price": 72,
-      "type": "alcool",
+      "type": "vins",
       "color": "red",
       "tva": 20
     },
     {
       "name": "Domaine de Sainte Andrieu (rosé)",
       "price": 35,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Ultimate Provence (rosé)",
       "price": 32,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Ultimate Provence (MAGNUM)",
       "price": 68,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Château Sainte Marguerite, cuvée symphonie",
       "price": 48,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Château Reillanne (rosé)",
       "price": 39,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Grand Beylesse, Domaine de l’abbaye",
       "price": 52,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Grand Beylesse, Domaine de l’abbaye (MAGNUM)",
       "price": 95,
-      "type": "alcool",
+      "type": "vins",
       "color": "pink",
       "tva": 20
     },
     {
       "name": "Louis Roederer, Brut Collection",
       "price": 95,
-      "type": "alcool",
-      "color": "pink",
+      "type": "vins",
+      "color": "gold",
       "tva": 20
     },
     {
       "name": "Ruinart, Blanc de Blancs",
       "price": 180,
-      "type": "alcool",
-      "color": "white",
+      "type": "vins",
+      "color": "gold",
       "tva": 20
-    }
-  ]
+    },
+    {
+        "name": "Coca cola / zéro",
+        "type": "soft",
+        "price": 5,
+        "tva": 10
+      },
+      {
+        "name": "Perrier",
+        "type": "soft",
+        "price": 5,
+        "tva": 10
+      },
+      {
+        "name": "Orangina",
+        "type": "soft",
+        "price": 5,
+        "tva": 10
+      },
+      {
+        "name": "Ginger beer",
+        "type": "soft",
+        "price": 6,
+        "tva": 10
+      },
+      {
+        "name": "Jus orange pressé",
+        "type": "soft",
+        "price": 6,
+        "tva": 10
+      },
+      {
+        "name": "Jus artisanal bio",
+        "type": "soft",
+        "price": 6,
+        "tva": 10
+      },
+      {
+        "name": "Abatille plate",
+        "type": "soft",
+        "price": 11,
+        "tva": 10
+      },
+      {
+        "name": "Abatille gazeuse",
+        "type": "soft",
+        "price": 11,
+        "tva": 10
+      }
+    ]
