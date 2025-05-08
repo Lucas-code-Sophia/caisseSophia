@@ -14,7 +14,22 @@ function Caisse() {
   const [showDiversPopup, setShowDiversPopup] = useState(false);
   const [diversTitle, setDiversTitle] = useState('');
   const [diversPrice, setDiversPrice] = useState('');
-
+  const handlePrintInline = () => {
+    const printContents = ticketRef.current.innerHTML;
+    const originalContents = document.body.innerHTML;
+  
+    const printContainer = document.createElement('div');
+    printContainer.innerHTML = printContents;
+    document.body.innerHTML = '';
+    document.body.appendChild(printContainer);
+  
+    window.print();
+  
+    // Rétablir l'app après un court délai
+    setTimeout(() => {
+      document.body.innerHTML = originalContents;
+    }, 100); // suffisant pour que l'impression démarre
+  };  
 
   useEffect(() => {
     emailjs.init('E9IrqJu4dENA8QDPF');
@@ -342,7 +357,7 @@ function Caisse() {
                 </div>
                 <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                   <button onClick={() => setShowEmailPopup(true)} >📩 Rentrer l'adresse email</button>
-                  <button onClick={handlePrint} style={{ marginRight: '1rem', marginTop: '1rem' }}>🖨️ Imprimer</button>
+                  <button onClick={handlePrintInline} style={{ marginRight: '1rem', marginTop: '1rem' }}>🖨️ Imprimer</button>
                   <button onClick={() => setShowTicketPreview(false)}>Fermer</button>
                 </div>
               </div>
