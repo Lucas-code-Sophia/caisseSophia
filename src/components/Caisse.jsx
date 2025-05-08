@@ -11,6 +11,10 @@ function Caisse() {
   const [showTicketPreview, setShowTicketPreview] = useState(false);
   const [showEmailPopup, setShowEmailPopup] = useState(false);
   const [emailToSend, setEmailToSend] = useState('');
+  const [showDiversPopup, setShowDiversPopup] = useState(false);
+  const [diversTitle, setDiversTitle] = useState('');
+  const [diversPrice, setDiversPrice] = useState('');
+
 
   useEffect(() => {
     emailjs.init('E9IrqJu4dENA8QDPF');
@@ -67,7 +71,7 @@ function Caisse() {
   };
 
   const [ticketNumber, setTicketNumber] = useState(generateTicketNumber());
-  const types = ['entrée', 'plat', 'dessert', 'soft', 'cocktail', 'vins', 'café', 'menu', 'autre'];
+  const types = ['entrée', 'plat', 'dessert', 'soft', 'alcool', 'cocktail', 'vins', 'café', 'menu', 'autre'];
 
   useEffect(() => {
     const savedProducts = localStorage.getItem('products');
@@ -139,22 +143,67 @@ function Caisse() {
   const total = order.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handlePrint = () => {
-    const printWindow = window.open('', '_blank');
-    const content = `
-      <html><head><title>Ticket</title><style>
-      body { font-family: monospace; font-size: 12px; padding: 1rem; }
-      </style></head><body>${ticketRef.current.innerHTML}</body></html>
+    const originalContents = document.body.innerHTML;
+    const ticketContent = ticketRef.current.innerHTML;
+  
+    document.body.innerHTML = `
+      <html>
+        <head>
+          <style>
+            body {
+              font-family: monospace;
+              font-size: 12px;
+              padding: 1rem;
+            }
+          </style>
+        </head>
+        <body>${ticketContent}</body>
+      </html>
     `;
+  
+    window.print();
+  
+    // Restaure le contenu après impression
+    setTimeout(() => {
+      document.body.innerHTML = originalContents;
+      window.location.reload(); // Recharge proprement la page
+    }, 100);
+  };  
 
-    printWindow.document.open();
-    printWindow.document.write(content);
-    printWindow.document.close();
-
-    printWindow.onload = () => {
-      printWindow.focus();
-      printWindow.print();
+  const sendPdfByEmail = async () => {
+    const element = ticketRef.current;
+  
+    const opt = {
+      margin: 0.2,
+      filename: `ticket-${ticketNumber}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a5', orientation: 'portrait' },
     };
-  };
+  
+    const pdfBlob = await html2pdf().from(element).set(opt).outputPdf('blob');
+  
+    const reader = new FileReader();
+    reader.readAsDataURL(pdfBlob);
+    reader.onloadend = async () => {
+      const base64Pdf = reader.result.split(',')[1];
+  
+      try {
+        await emailjs.send('service_sophia', 'template_l1tzc55', {
+          to_email: emailToSend,
+          ticket_content: ticketRef.current.innerHTML,
+        }, 'E9IrqJu4dENA8QDPF');
+  
+        alert(`PDF envoyé à ${emailToSend}`);
+        setShowEmailPopup(false);
+        setShowTicketPreview(false);
+      } catch (error) {
+        console.error('Erreur EmailJS :', error);
+        alert('Erreur lors de l’envoi du PDF.');
+      }
+    };
+  };  
+
 
   return (
     <div className="caisse-container">
@@ -225,44 +274,75 @@ function Caisse() {
               {type.charAt(0).toUpperCase() + type.slice(1)}
             </a>
           ))}
-
+          <button className="button" onClick={() => setShowDiversPopup(true)}>➕ Divers</button>
           {showTicketPreview && (
             <div className="ticket-popup">
               <div className="ticket-content">
                 <div ref={ticketRef} style={{ fontFamily: 'monospace', fontSize: '12px', color: 'black' }}>
                   <h2 style={{ textAlign: 'center' }}>SOPHIA</h2>
                   <p style={{ textAlign: 'center' }}>
-                    67 boulevard de la plage<br />33970 Cap-Ferret<br />Tél : 0557182188
+                    67 BOULEVARD DE LA PLAGE<br />33970 CAP-FERRET<br />Tél : 0557182188<br />SARL LILY<br />SIRET : 94077148800027
                   </p>
-                  <p>
-                    Ticket : {ticketNumber}<br />{new Date().toLocaleString()}
+                  <p style={{ textAlign: 'left' }}>
+                    Ticket : {ticketNumber}<br />{new Date().toLocaleString()}<br /> Prix en € - Administrateur A
+                    <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '1rem' }}>JUSTIFICATIF</p>
                   </p>
                   <hr />
                   {order.map(item => (
                     <div key={item.id} style={{ marginBottom: '4px' }}>
-                      {item.name} x{item.quantity} = {(item.price * item.quantity).toFixed(2)} €
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span>{item.name} x{item.quantity}</span>
+                      <span>{(item.price * item.quantity).toFixed(2)}  €</span>
+                      </div>
                     </div>
                   ))}
                   <hr />
-                  {(() => {
-                    const tva10TTC = order.filter(i => parseFloat(i.tva) === 10).reduce((sum, i) => sum + (i.price * i.quantity), 0);
-                    const tva20TTC = order.filter(i => parseFloat(i.tva) === 20).reduce((sum, i) => sum + (i.price * i.quantity), 0);
-                    const tva10Amount = (tva10TTC * 10) / 110;
-                    const tva20Amount = (tva20TTC * 20) / 120;
-                    const totalTTC = tva10TTC + tva20TTC;
-                    return (
-                      <>
-                        <p>T.V.A. 10% : {tva10Amount.toFixed(2)} €<br />T.V.A. 20% : {tva20Amount.toFixed(2)} €</p>
-                        <p><strong>Total TTC : {totalTTC.toFixed(2)} €</strong></p>
-                      </>
-                    );
-                  })()}
+                  <table style={{ width: '100%', textAlign: 'left', fontSize: '12px' }}>
+                    <thead>
+                      <tr>
+                      <th style={{ width: '25%', textAlign: 'left' }}>Taux</th>
+                      <th style={{ width: '25%', textAlign: 'right' }}>HT</th>
+                      <th style={{ width: '25%', textAlign: 'right' }}>TVA</th>
+                      <th style={{ width: '25%', textAlign: 'right' }}>TTC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(() => {
+                        const tva10TTC = order.filter(i => parseFloat(i.tva) === 10).reduce((sum, i) => sum + (i.price * i.quantity), 0);
+                        const tva20TTC = order.filter(i => parseFloat(i.tva) === 20).reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+                        const tva10HT = tva10TTC / 1.10;
+                        const tva10TVA = tva10TTC - tva10HT;
+
+                        const tva20HT = tva20TTC / 1.20;
+                        const tva20TVA = tva20TTC - tva20HT;
+
+                        return (
+                          <>
+                            <tr>
+                              <td style={{ textAlign: 'left' }}>10%</td>
+                              <td style={{ textAlign: 'right' }}>{tva10HT.toFixed(2)}</td>
+                              <td style={{ textAlign: 'right' }}>{tva10TVA.toFixed(2)}</td>
+                              <td style={{ textAlign: 'right' }}>{tva10TTC.toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                              <td style={{ textAlign: 'left' }}>20%</td>
+                              <td style={{ textAlign: 'right' }}>{tva20HT.toFixed(2)}</td>
+                              <td style={{ textAlign: 'right' }}>{tva20TVA.toFixed(2)}</td>
+                              <td style={{ textAlign: 'right' }}>{tva20TTC.toFixed(2)}</td>
+                            </tr>
+                          </>
+                        );
+                      })()}
+                    </tbody>
+                  </table>
                   <hr />
-                  <p style={{ textAlign: 'center', marginTop: '1rem' }}>Merci de nous avoir rendu visite chez Sophia,<br />on attend déjà votre retour !</p>
-                  <p style={{ fontSize: '11px', textAlign: 'center' }}>Horaires : Tous les jours de 12h à 15h et de 19h à 23h</p>
+                  <p style={{ textAlign: 'left', marginTop: '1rem' }}>Merci de nous avoir rendu visite chez Sophia, on attend déjà votre retour !</p>
+                  <p style={{ textAlign: 'right', fontSize: '10px', marginTop: '1rem' }}>Envoyé le : {new Date().toLocaleDateString()}</p>
                 </div>
                 <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-                  <button onClick={() => setShowEmailPopup(true)} style={{ marginRight: '1rem' }}>📩 Rentrer l'adresse email</button>
+                  <button onClick={() => setShowEmailPopup(true)} >📩 Rentrer l'adresse email</button>
+                  <button onClick={handlePrint} style={{ marginRight: '1rem', marginTop: '1rem' }}>🖨️ Imprimer</button>
                   <button onClick={() => setShowTicketPreview(false)}>Fermer</button>
                 </div>
               </div>
@@ -270,6 +350,50 @@ function Caisse() {
           )}
         </div>
       </div>
+
+      {showDiversPopup && (
+  <div className="ticket-popup">
+    <div className="ticket-content" style={{ textAlign: 'center' }}>
+      <h3>Ajouter un article divers</h3>
+      <input
+        type="text"
+        placeholder="Nom du produit"
+        value={diversTitle}
+        onChange={(e) => setDiversTitle(e.target.value)}
+        style={{ width: '100%', marginBottom: '0.5rem', padding: '0.5rem' }}
+      />
+      <input
+        type="number"
+        placeholder="Prix (€)"
+        value={diversPrice}
+        onChange={(e) => setDiversPrice(e.target.value)}
+        style={{ width: '100%', marginBottom: '1rem', padding: '0.5rem' }}
+      />
+      <button
+        className="button"
+        onClick={() => {
+          if (!diversTitle || !diversPrice) return alert('Remplis les deux champs');
+          addToOrder({
+            name: diversTitle,
+            price: parseFloat(diversPrice),
+            type: 'divers',
+            tva: 10,
+            color: '#d3d3d3'
+          });
+          setDiversTitle('');
+          setDiversPrice('');
+          setShowDiversPopup(false);
+        }}
+      >
+        ➕ Ajouter à la commande
+      </button>
+      <br />
+      <button className="button" onClick={() => setShowDiversPopup(false)} style={{ marginTop: '1rem' }}>
+        Annuler
+      </button>
+    </div>
+  </div>
+)}
 
       {showEmailPopup && (
         <div className="ticket-popup">

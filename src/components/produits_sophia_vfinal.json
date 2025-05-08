@@ -675,13 +675,55 @@
       {
         "name": "Abatille plate",
         "type": "soft",
-        "price": 11,
+        "price": 6,
         "tva": 10
       },
       {
         "name": "Abatille gazeuse",
         "type": "soft",
-        "price": 11,
+        "price": 6,
         "tva": 10
-      }
-    ]
+      },
+      {
+        "name": "Bud 25cl",
+        "type": "alcool",
+        "price": 4.5,
+        "tva": 10,
+        "color": "#f5deb3"
+        },
+        {
+          "name": "Bud 50cl",
+          "type": "alcool",
+          "price": 8.5,
+          "tva": 10,
+          "color": "#f5deb3"
+        },
+        {
+          "name": "IPA 25cl",
+          "type": "alcool",
+          "price": 5,
+          "tva": 10,
+          "color": "#f5deb3"
+        },
+        {
+          "name": "IPA 50cl",
+          "type": "alcool",
+          "price": 9,
+          "tva": 10,
+          "color": "#f5deb3"
+        },
+        {
+          "name": "Blanche 25cl",
+          "type": "alcool",
+          "price": 5,
+          "tva": 10,
+          "color": "#f5deb3"
+        },
+        {
+          "name": "Blanche 50cl",
+          "type": "alcool",
+          "price": 9,
+          "tva": 10,
+          "color": "#f5deb3"
+        }
+      ]
