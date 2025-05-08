@@ -168,3 +168,24 @@ body {
     }
   }
   
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+  
+    @page {
+      size: 57mm auto;
+      margin: 0;
+    }
+  
+    .ticket-wrapper {
+      width: 57mm;
+      padding-left: 4mm;
+      padding-right: 4mm;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+  }
+  

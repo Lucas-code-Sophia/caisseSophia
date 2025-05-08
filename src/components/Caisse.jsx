@@ -14,6 +14,7 @@ function Caisse() {
   const [showDiversPopup, setShowDiversPopup] = useState(false);
   const [diversTitle, setDiversTitle] = useState('');
   const [diversPrice, setDiversPrice] = useState('');
+  const [couverts, setCouverts] = useState(0); // valeur par défaut à 0
   const handlePrintInline = () => {
     const printContents = ticketRef.current.innerHTML;
     const originalContents = document.body.innerHTML;
@@ -248,7 +249,20 @@ function Caisse() {
                 </li>
               ))}
             </ul>
-            <button className="button" onClick={() => setOrder([])}>Nouvelle commande</button>
+            {order.length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+              <label style={{ fontWeight: 'bold' }}>Couverts :</label>
+              <button onClick={() => setCouverts(Math.max(1, couverts - 1))}>➖</button>
+              <input
+                type="number"
+                value={couverts}
+                onChange={(e) => setCouverts(Math.max(1, parseInt(e.target.value) || 1))}
+                style={{ width: '3rem', textAlign: 'center' }}
+              />
+              <button onClick={() => setCouverts(couverts + 1)}>➕</button>
+            </div>
+          )}
+            <button className="button" style={{ marginRight: '1 rem' }} onClick={() => setOrder([])}>Nouvelle commande</button>
             {order.length > 0 && (
               <button className="button" onClick={() => setShowTicketPreview(true)}>Envoyer le ticket</button>
             )}
@@ -293,14 +307,16 @@ function Caisse() {
           {showTicketPreview && (
             <div className="ticket-popup">
               <div className="ticket-content">
-                <div ref={ticketRef} style={{ fontFamily: 'monospace', fontSize: '12px', color: 'black' }}>
+                <div ref={ticketRef} style={{ width: '57mm', fontFamily: '"Roboto Condensed", "Arial Narrow", monospace', fontSize: '11px', color: 'black', padding: '4mm', boxSizing: 'border-box' }}>
                   <h2 style={{ textAlign: 'center' }}>SOPHIA</h2>
                   <p style={{ textAlign: 'center' }}>
                     67 BOULEVARD DE LA PLAGE<br />33970 CAP-FERRET<br />Tél : 0557182188<br />SARL LILY<br />SIRET : 94077148800027
                   </p>
-                  <p style={{ textAlign: 'left' }}>
-                    Ticket : {ticketNumber}<br />{new Date().toLocaleString()}<br /> Prix en € - Administrateur A
-                    <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '1rem' }}>JUSTIFICATIF</p>
+                  <p style={{ textAlign: 'left', fontWeight: 'bold'}}>
+                    Ticket : {ticketNumber}<br />{new Date().toLocaleString()}<br /> {couverts} couverts
+                    - Administrateur A
+                  <p style={{ textAlign: 'left', fontWeight: 'normal'}}>Prix en €</p>
+                  <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '1rem' }}>JUSTIFICATIF</p>
                   </p>
                   <hr />
                   {order.map(item => (
@@ -311,6 +327,10 @@ function Caisse() {
                       </div>
                     </div>
                   ))}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '25px', fontWeight: 'bold', fontFamily: '"Arial Narrow", "Roboto Condensed", sans-serif', margin: '1rem 0' }}>
+                  <span>Total TTC Dû</span>
+                  <span>{total.toFixed(2).replace('.', ',')}</span>
+                </div>
                   <hr />
                   <table style={{ width: '100%', textAlign: 'left', fontSize: '12px' }}>
                     <thead>
