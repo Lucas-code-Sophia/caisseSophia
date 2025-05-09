@@ -56,6 +56,41 @@
       "tva": 20
     },
     {
+      "name": "Plymouth Tonic",
+      "price": 18,
+      "type": "cocktail",
+      "color": "#FFDAB9",
+      "tva": 20
+    },
+    {
+      "name": "Malfy Tonic",
+      "price": 18,
+      "type": "cocktail",
+      "color": "#FFDAB9",
+      "tva": 20
+    },
+    {
+      "name": "Monkey Tonic",
+      "price": 20,
+      "type": "cocktail",
+      "color": "#FFDAB9",
+      "tva": 20
+    },
+    {
+      "name": "Negroni",
+      "price": 14,
+      "type": "cocktail",
+      "color": "#FFDAB9",
+      "tva": 20
+    },
+    {
+      "name": "Irish Coffee",
+      "price": 14,
+      "type": "cocktail",
+      "color": "#FFDAB9",
+      "tva": 20
+    }, 
+    {
       "name": "Léa",
       "price": 9,
       "type": "soft",
@@ -725,5 +760,180 @@
           "price": 9,
           "tva": 10,
           "color": "#f5deb3"
-        }
+        },
+          {
+            "name": "Chivas 18 ans",
+            "type": "alcool supérieur",
+            "price": 25,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Chivas 12 ans",
+            "type": "alcool supérieur",
+            "price": 8,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Jameson",
+            "type": "alcool supérieur",
+            "price": 12,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Jack",
+            "type": "alcool supérieur",
+            "price": 10,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Four Roses",
+            "type": "alcool supérieur",
+            "price": 11,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Nikka",
+            "type": "alcool supérieur",
+            "price": 20,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Ballantine's",
+            "type": "alcool supérieur",
+            "price": 14,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Aberlour",
+            "type": "alcool supérieur",
+            "price": 20,
+            "tva": 20,
+            "color": "black"
+          },
+          {
+            "name": "Lechusa Reserva",
+            "type": "alcool supérieur",
+            "price": 20,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Don Papa",
+            "type": "alcool supérieur",
+            "price": 13,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Bumbu XO",
+            "type": "alcool supérieur",
+            "price": 9,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Bumbu",
+            "type": "alcool supérieur",
+            "price": 20,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Havana Especial",
+            "type": "alcool supérieur",
+            "price": 17,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Havana 7 ans",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "brown"
+          },
+          {
+            "name": "Tanqueray Gin",
+            "type": "alcool supérieur",
+            "price": 12,
+            "tva": 20,
+            "color": "antiquewhite"
+          },
+          {
+            "name": "Plymouth",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "antiquewhite"
+          },
+          {
+            "name": "Malfy Grapefruit",
+            "type": "alcool supérieur",
+            "price": 16,
+            "tva": 20,
+            "color": "antiquewhite"
+          },
+          {
+            "name": "Malfy Limone",
+            "type": "alcool supérieur",
+            "price": 16,
+            "tva": 20,
+            "color": "antiquewhite"
+          },
+          {
+            "name": "Martell VSOP",
+            "type": "alcool supérieur",
+            "price": 12,
+            "tva": 20,
+            "color": "darkgoldenrod"
+          },
+          {
+            "name": "Martell XO",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "darkgoldenrod"
+          },
+          {
+            "name": "Janneau XO",
+            "type": "alcool supérieur",
+            "price": null,
+            "tva": 20,
+            "color": "orange"
+          },
+          {
+            "name": "Tariquet",
+            "type": "alcool supérieur",
+            "price": null,
+            "tva": 20,
+            "color": "orange"
+          },
+          {
+            "name": "Bas Armagnac",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "orange"
+          },
+          {
+            "name": "Calvados",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "green"
+          },
+          {
+            "name": "Vodka du Pyla",
+            "type": "alcool supérieur",
+            "price": 15,
+            "tva": 20,
+            "color": "white"
+          }
       ]

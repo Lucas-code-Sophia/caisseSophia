@@ -87,7 +87,7 @@ function Caisse() {
   };
 
   const [ticketNumber, setTicketNumber] = useState(generateTicketNumber());
-  const types = ['entrée', 'plat', 'dessert', 'soft', 'alcool', 'cocktail', 'vins', 'café', 'menu', 'autre'];
+  const types = ['entrée', 'plat', 'dessert', 'soft', 'alcool', 'alcool supérieur', 'cocktail', 'vins', 'café', 'menu', 'autre'];
 
   useEffect(() => {
     const savedProducts = localStorage.getItem('products');
@@ -178,6 +178,35 @@ function Caisse() {
     `;
   
     window.print();
+
+    const handlePrintInline = () => {
+      const printWindow = window.open('', 'PRINT', 'height=600,width=400');
+      if (!printWindow) return;
+    
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Ticket</title>
+            <style>
+              body {
+                font-family: "Roboto Condensed", "Arial Narrow", monospace;
+                font-size: 11px;
+                box-sizing: border-box;
+              }
+            </style>
+          </head>
+          <body>
+            ${ticketRef.current.innerHTML}
+          </body>
+        </html>
+      `);
+    
+      printWindow.document.close();
+      printWindow.focus();
+    
+      printWindow.print();
+      printWindow.close();
+    };    
   
     // Restaure le contenu après impression
     setTimeout(() => {
@@ -307,7 +336,7 @@ function Caisse() {
           {showTicketPreview && (
             <div className="ticket-popup">
               <div className="ticket-content">
-                <div ref={ticketRef} style={{ width: '57mm', fontFamily: '"Roboto Condensed", "Arial Narrow", monospace', fontSize: '11px', color: 'black', padding: '4mm', boxSizing: 'border-box' }}>
+                <div ref={ticketRef} style={{ fontFamily: '"Roboto Condensed", "Arial Narrow", monospace', fontSize: '11px', color: 'black', padding: '4mm', boxSizing: 'border-box' }}>
                   <h2 style={{ textAlign: 'center' }}>SOPHIA</h2>
                   <p style={{ textAlign: 'center' }}>
                     67 BOULEVARD DE LA PLAGE<br />33970 CAP-FERRET<br />Tél : 0557182188<br />SARL LILY<br />SIRET : 94077148800027
@@ -377,7 +406,7 @@ function Caisse() {
                 </div>
                 <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                   <button onClick={() => setShowEmailPopup(true)} >📩 Rentrer l'adresse email</button>
-                  <button onClick={handlePrintInline} style={{ marginRight: '1rem', marginTop: '1rem' }}>🖨️ Imprimer</button>
+                  <button onClick={handlePrintInline} style={{ marginRight: '1rem', marginTop: '1rem' }} disabled>🖨️ Imprimer</button>
                   <button onClick={() => setShowTicketPreview(false)}>Fermer</button>
                 </div>
               </div>
