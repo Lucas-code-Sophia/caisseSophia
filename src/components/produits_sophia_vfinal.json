@@ -765,6 +765,7 @@
             "name": "Chivas 18 ans",
             "type": "alcool supérieur",
             "price": 25,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -772,6 +773,7 @@
             "name": "Chivas 12 ans",
             "type": "alcool supérieur",
             "price": 8,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -779,6 +781,7 @@
             "name": "Jameson",
             "type": "alcool supérieur",
             "price": 12,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -786,6 +789,7 @@
             "name": "Jack",
             "type": "alcool supérieur",
             "price": 10,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -793,6 +797,7 @@
             "name": "Four Roses",
             "type": "alcool supérieur",
             "price": 11,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -800,6 +805,7 @@
             "name": "Nikka",
             "type": "alcool supérieur",
             "price": 20,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -807,6 +813,7 @@
             "name": "Ballantine's",
             "type": "alcool supérieur",
             "price": 14,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },
@@ -814,6 +821,7 @@
             "name": "Aberlour",
             "type": "alcool supérieur",
             "price": 20,
+            "text-color": "white",
             "tva": 20,
             "color": "black"
           },

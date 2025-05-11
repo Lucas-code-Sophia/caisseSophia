@@ -497,6 +497,38 @@ function Caisse() {
           </div>
         </div>
       )}
+
+      {showPaymentPopup && (
+        <div className="ticket-popup">
+            <div className="ticket-content" style={{ textAlign: 'center' }}>
+              <h3>Paiement de {selectedTotal.toFixed(2)} €</h3>
+              <button className="button" onClick={() => setCashPopup(true)}>💶 Espèces</button>
+              <button className="button" style={{ marginLeft: '1rem' }} onClick={() => handlePayment('CB')}>💳 Carte bancaire</button>
+            </div>
+          </div>
+        )}
+        
+        {cashPopup && (
+          <div className="ticket-popup">
+            <div className="ticket-content" style={{ textAlign: 'center' }}>
+              <h3>Montant à payer : {selectedTotal.toFixed(2)} €</h3>
+              <input
+                type="number"
+                placeholder="Montant reçu"
+                value={cashReceived}
+                onChange={(e) => setCashReceived(e.target.value)}
+                style={{ width: '100%', padding: '0.5rem', marginBottom: '1rem' }}
+              />
+              {parseFloat(cashReceived) >= selectedTotal && (
+                <p>Rendu : {(parseFloat(cashReceived) - selectedTotal).toFixed(2)} €</p>
+              )}
+              <button className="button" onClick={() => handlePayment('Espèces', cashReceived)}>Valider le paiement</button>
+              <br />
+              <button className="button" onClick={() => { setCashPopup(false); setShowPaymentPopup(false); }} style={{ marginTop: '1rem' }}>Annuler</button>
+            </div>
+          </div>
+        )}
+            
     </div>
   );
 }
