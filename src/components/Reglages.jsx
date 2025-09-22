@@ -125,7 +125,7 @@ function Reglages() {
 
   return (
     <div className="reglages-container">
-      <div className="reglages-main">
+      <div className="reglages-main" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
         <div className="formulaire-ajout">
           <h2>Ajouter un produit</h2>
 

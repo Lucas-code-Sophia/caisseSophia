@@ -1,3 +1,35 @@
+/* Palette de couleurs harmonieuse */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navlink {
+  color: white;
+}
+
+.navlink:hover {
+  background-color: var(--secondary-color);
+}
+
 #root {
   width: 100%;
   padding: 2rem;
@@ -32,41 +64,61 @@
   }
 }
 
+/* Espacement et marges */
+.container {
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
 .card {
-  padding: 2em;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .read-the-docs {
   color: #888;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-  background-color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navlink {
-  text-decoration: none;
-  color: black;
-  font-size: 1.2rem;
-  font-weight: 500;
+/* Styles communs pour les boutons */
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background-color 0.2s, color 0.2s;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.navlink:hover {
-  background-color: #f0f0f0;
+.button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-.navlink.active {
-  background-color: #e0e0e0;
+/* Styles communs pour les titres */
+.title {
+  font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Transitions douces pour les interactions utilisateur */
+.navlink {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

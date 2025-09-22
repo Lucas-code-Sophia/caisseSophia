@@ -15,7 +15,7 @@ function Historique() {
   const groupByDate = (payments) => {
     const grouped = {};
     payments.forEach(payment => {
-      const dateOnly = payment.date.split(',')[0];
+      const dateOnly = payment.date.split(' ')[0]; // Utiliser uniquement la date
       if (!grouped[dateOnly]) grouped[dateOnly] = [];
       grouped[dateOnly].push(payment);
     });
@@ -66,29 +66,36 @@ function Historique() {
 
     return (
       <div className="historique-container">
-        <h2>Historique des Transactions</h2>
-    
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
-        <thead><tr>
-        <th style={{ border: '1px solid #ccc', padding: '8px' }}>Date</th>
-        <th style={{ border: '1px solid #ccc', padding: '8px' }}>Type</th>
-        <th style={{ border: '1px solid #ccc', padding: '8px' }}>Montant (€)</th>
-        <th style={{ border: '1px solid #ccc', padding: '8px' }}>❌</th>
-        </tr>
-        </thead>
-        <tbody>
-          {paymentsHistory.map((p) => (
-            <tr key={p.id}>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{p.date}</td>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{p.type}</td>
-              <td style={{ border: '1px solid #ccc', padding: '8px' }}>{p.amount.toFixed(2)}</td>
-              <td style={{ border: '1px solid #ccc', padding: '8px', textAlign: 'center' }}>
-                <button onClick={() => deletePayment(p.id)} style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'red' }}>🗑️</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-        </table>
+        <h2 className="title">Historique des Transactions</h2>
+        {sortedDates.map(date => (
+          <div key={date} className="section">
+            <h3 className="subtitle">{date}</h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div>
+                <h4 className="subtitle">Espèces</h4>
+                {groupedPayments[date].filter(p => p.type === 'Espèces').map((p, index) => (
+                  <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', borderBottom: '1px solid #ccc' }}>
+                    <span>{p.amount ? p.amount.toFixed(2) : '0.00'} €</span>
+                    <button onClick={() => deletePayment(p.id)} style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'red' }}>
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <h4 className="subtitle">Carte</h4>
+                {groupedPayments[date].filter(p => p.type === 'CB').map((p, index) => (
+                  <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', borderBottom: '1px solid #ccc' }}>
+                    <span>{p.amount ? p.amount.toFixed(2) : '0.00'} €</span>
+                    <button onClick={() => deletePayment(p.id)} style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'red' }}>
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
     
         <div style={{ marginTop: '2rem' }}>
           <strong>Total CB :</strong> {totalCB.toFixed(2)} €<br />
@@ -96,7 +103,7 @@ function Historique() {
         </div>
     
         <button className="button" onClick={exportPaymentsToCSV} style={{ marginTop: '2rem', marginRight: '1rem' }}>
-          📤 Exporter en CSV
+          4e4 Exporter en CSV
         </button>
     
         <Link to="/" className="button" style={{ marginTop: '2rem' }}>

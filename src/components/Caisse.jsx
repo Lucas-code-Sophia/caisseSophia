@@ -251,7 +251,7 @@ function Caisse() {
 
 
   return (
-    <div className="caisse-container">
+    <div className="caisse-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
       <div className="commande-section">
         <h2>Commande en cours</h2>
         {order.length === 0 ? (
@@ -314,7 +314,7 @@ function Caisse() {
           {types.map((type) => (
             <div key={type} id={type} style={{ marginBottom: '2rem' }}>
               <h3 style={{ borderBottom: '1px solid #ccc' }}>{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '0.5rem' }}>
                 {products.filter((prod) => prod.type === type).map((prod) => (
                   <button key={prod.id} onClick={() => addToOrder(prod)} className="produit-card" style={{ backgroundColor: prod.color }}>
                     {prod.name}<br />{prod.price}€
